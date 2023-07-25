@@ -1,4 +1,4 @@
-import { apiAxios } from './requests'
+import { apiAxios } from './src/requests'
 
 export interface PageApi<T = any> {
   total: number
@@ -11,4 +11,4 @@ const AUser = {
 }
 
 export { AUser }
-export * from './requests'
+export * from './src/requests'

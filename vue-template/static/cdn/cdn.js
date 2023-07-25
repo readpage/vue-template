@@ -1,3 +1,16 @@
+const cDNArr = [
+  ['https://cdn.staticfile.org/vue/3.3.4/vue.runtime.global.prod.min.js', '/static/cdn/src/vue-3.3.4.js'],
+  ['https://cdn.staticfile.org/axios/0.21.4/axios.min.js', '/static/cdn/src/axios-0.21.4.js'],
+  ['https://cdn.staticfile.org/vue-demi/0.14.0/index.iife.min.js', '/static/cdn/src/vue-demi-0.14.0.js'],
+  ['https://cdn.staticfile.org/pinia/2.1.4/pinia.iife.min.js', '/static/cdn/src/pinia-2.1.4.js'],
+  ['https://cdn.staticfile.org/vue-router/4.2.4/vue-router.global.min.js', '/static/cdn/src/vue-router-4.2.4.js'],
+  ['https://cdn.staticfile.org/element-plus/2.3.3/index.css', '/static/cdn/src/element-plus-2.3.3.css'],
+  ['https://cdn.staticfile.org/element-plus/2.3.3/index.full.min.js', '/static/cdn/src/element-plus-2.3.3.js'],
+  ['/static/cdn/src/undraw-ui.js'],
+  ['/static/cdn/src/undraw-ui.css'],
+  ['/assets/js/main-37a2ef6f.js&type=module']
+]
+loadScripts(cDNArr)
 function loadScripts(arr, callback = Function) {
   const loader = (e, success = Function, error = Function) => {
     let typeIndex = e.lastIndexOf('&type=')
@@ -69,12 +82,3 @@ function loadScripts(arr, callback = Function) {
     }
   })()
 }
-
-const cDNArr = [
-  ['https://cdn.staticfile.org/vue/3.2.47/vue.global.min.js', '/cdn/vue.global.min.js'],
-  ['https://cdn.staticfile.org/element-plus/2.2.0/index.css', '/cdn/element-plus.css'],
-  ['https://cdn.staticfile.org/element-plus/2.2.0/index.full.min.js', '/cdn/element-plus.js'],
-  ['/assets/main.js&type=module'],
-  ['/assets/index.css']
-]
-loadScripts(cDNArr)

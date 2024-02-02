@@ -8,7 +8,7 @@ const cDNArr = [
   ['https://cdn.staticfile.org/element-plus/2.3.3/index.full.min.js', '/static/cdn/src/element-plus-2.3.3.js'],
   ['/static/cdn/src/undraw-ui.js'],
   ['/static/cdn/src/undraw-ui.css'],
-  ['/assets/js/main-37a2ef6f.js&type=module']
+  ['/assets/js/main.js&type=module']
 ]
 loadScripts(cDNArr)
 function loadScripts(arr, callback = Function) {

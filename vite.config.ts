@@ -26,14 +26,14 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: 3000
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:9000',
-    //     changeOrigin: true,
-    //     rewrite: path => path.replace(/^\/api/, '')
-    //   }
-    // }
+    port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, '')
+      }
+    }
   },
   // 打包
   build: {

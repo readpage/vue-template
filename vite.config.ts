@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import externalGlobals from 'rollup-plugin-external-globals'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import UnoCSS from 'unocss/vite'
 import transformerDirectives from '@unocss/transformer-directives'
 import { resolve } from 'path'
@@ -11,6 +13,12 @@ const project = 'vue-template'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
+    }),
     UnoCSS({
       transformers: [transformerDirectives()]
     }),
@@ -40,6 +48,7 @@ export default defineConfig({
     // 打包输出目录
     outDir: project,
     minify: true, //是否进行压缩
+    chunkSizeWarningLimit: 1000, // 设置警告阈值为 1000 kb
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html')
@@ -51,16 +60,16 @@ export default defineConfig({
         banner: `/*! Version: v${pkg.version} */`,
         manualChunks(id) {
           // 最小化拆分包
-          if (id.includes('node_modules')) {
-            const match = id.split('node_modules/')[1].split('/')[0]
-            const split = ['nprogress']
-            if (split.includes(match)) {
-              return match
-            }
+          if (id.includes('node_modules/.pnpm')) {
+            return id.split('node_modules/.pnpm')[1].split('/')[3]
           }
           if (id.includes('iconpark.js')) {
             // 需要单独分割那些资源 就写判断逻辑就行
             return 'iconpark'
+          }
+          if (id.includes('.svg')) {
+            // 需要单独分割那些资源 就写判断逻辑就行
+            return 'svg/svg'
           }
           // if (id.includes('style.css')) {
           //   // 需要单独分割那些资源 就写判断逻辑就行
@@ -71,22 +80,7 @@ export default defineConfig({
           //   return 'src/components/HelloWorld.vue'
           // }
         }
-      },
-      plugins: [
-        //此项只会在打包的文件中使用，未打包状态下的dev模式中不会走这里
-        externalGlobals({
-          // 如果您想过滤掉包导入，例如import ElementPlus from 'element-plus'
-          //其中key就是你引入的时候的名字，value就是引入的那个第三方库的全局变量名字
-          vue: 'Vue',
-          axios: 'axios',
-          pinia: 'Pinia',
-          'vue-router': 'VueRouter',
-          'element-plus': 'ElementPlus',
-          'element-plus/dist/index.css': 'element-plus/dist/index.css',
-          'undraw-ui': 'UndrawUi',
-          'undraw-ui/dist/style.css': 'undraw-ui/dist/style.css'
-        }) as any
-      ]
+      }
     }
   }
 })

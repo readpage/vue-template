@@ -21,8 +21,8 @@ dependencies:
     specifier: ^2.1.4
     version: 2.1.4(typescript@5.1.6)(vue@3.3.4)
   undraw-ui:
-    specifier: ^1.0.81
-    version: 1.0.82
+    specifier: ^1.1.1
+    version: 1.1.1
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -3242,8 +3242,8 @@ packages:
       jiti: 1.19.1
     dev: true
 
-  /undraw-ui@1.0.82:
-    resolution: {integrity: sha512-k7AOzIvhIIqmKcS6zX+aatWRQO2s+LgnwGAvwALAbencRvPhXlsw8i17/Ss+rWoT0cp2J4KGAY6NsF3l4Kdvkw==}
+  /undraw-ui@1.1.1:
+    resolution: {integrity: sha512-lJWSEImKK+OAs16w2H+8vldnf59IOCOXYuRMGc7mPLS8qdZJGKdyRvv7TiDH56PqufLGZbS0lTWepqUn+VRMew==}
     dependencies:
       element-plus: 2.6.0(vue@3.3.4)
       vue: 3.3.4

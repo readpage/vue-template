@@ -36,8 +36,9 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     proxy: {
+      // http://localhost:7032/file/download?filePath=/upload/test2.xlsx
       '/api': {
-        target: 'http://localhost:8082',
+        target: 'http://localhost:7032',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       }

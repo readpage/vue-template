@@ -19,7 +19,7 @@
     "nprogress": "^0.2.0",
     "@element-plus/icons-vue": "^2.1.0",
     "element-plus": "2.6.0",
-    "undraw-ui": "^1.0.81",
+    "undraw-ui": "^1.1.1",
     "pinia": "^2.1.4",
     "axios": "^1.6.8",
     "vue": "^3.3.4",
